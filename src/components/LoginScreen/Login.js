@@ -11,6 +11,7 @@ export default function Login() {
         <div className="loginScreen">
             <div className="loginScreen_background">
                 <img
+                    onClick={() => setSignIn(false)}
                     className="loginScreen_logo"
                     src="netflix-logo.png" alt=""
                 />
@@ -23,7 +24,7 @@ export default function Login() {
             </div>
             <div className="loginScreen_body">
                 {signIn
-                    ? (<SignUpScreen />)
+                    ? (<SignUpScreen signIn />)
                     : (<>
                         <h1>Unlimited movies, TV
                             shows and more.</h1>

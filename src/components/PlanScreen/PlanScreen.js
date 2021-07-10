@@ -61,6 +61,45 @@ export default function PlanScreen() {
             })
     }, [])
 
+    useEffect(() => {
+        if (alreadySubbed > 0 && alreadySubbed <= 4) {
+            if (subbedName === null || alreadySubbed === null)
+                return null
+            else {
+                let rowClass = ".row".concat(alreadySubbed)
+                let x = document.querySelectorAll(rowClass)
+                x.forEach(y => {
+                    y.classList.add("unaccessible")
+                })
+
+                x = document.querySelector(`.${subbedName.toLowerCase()}`)
+                x.classList.add("unaccessible_btn")
+                x.innerHTML = `${subbedName}<br/><h6>(Already Subscribed)</h6>`
+            }
+        }
+    }, [alreadySubbed])
+
+    function planFunc() {
+        let i = 0
+        const planArr = ["mobile", "basic", "standard", "premium"]
+        let val = []
+        val[i++] = Object.entries(products)
+            .map(([productId, productData]) => {
+                if (productData.name?.toLowerCase()
+                    .includes(subsciption?.role?.toLowerCase())) {
+                    subbedName = subsciption?.role
+                    planArr.forEach(plans => {
+                        if (plans === subsciption?.role?.toLowerCase())
+                            alreadySubbed = i
+                        i++
+                    })
+                }
+                return ({
+                    price: productData.prices
+                })
+            })
+    }
+
     function removeClass(row, btn) {
         let mobileList = document.querySelectorAll(row)
         mobileList.forEach(mobiles => {
@@ -85,7 +124,6 @@ export default function PlanScreen() {
 
         addClass(".row2", ".basic")
     }
-
     function mobilefunc() {
         removeClass(".row2", ".basic")
         removeClass(".row3", ".standard")
@@ -118,46 +156,6 @@ export default function PlanScreen() {
 
         addClass(".row4", ".premium")
         setSelectedProduct(productList[3])
-    }
-
-    function planFunc() {
-        let i = 0
-        const planArr = ["mobile", "basic", "standard", "premium"]
-        let val = []
-        val[i++] = Object.entries(products)
-            .map(([productId, productData]) => {
-                if (productData.name?.toLowerCase()
-                    .includes(subsciption?.role?.toLowerCase())) {
-                    subbedName = subsciption?.role
-                    planArr.forEach(plans => {
-                        if (plans === subsciption?.role?.toLowerCase())
-                            alreadySubbed = i
-                        i++
-                    })
-                }
-                return ({
-                    price: productData.prices
-                })
-            })
-        isAlreadySubbed()
-    }
-
-    function isAlreadySubbed() {
-        if (alreadySubbed > 0 && alreadySubbed <= 4) {
-            if (subbedName === null || alreadySubbed === null)
-                return null
-            else {
-                let rowClass = ".row".concat(alreadySubbed)
-                let x = document.querySelectorAll(rowClass)
-                x.forEach(y => {
-                    y.classList.add("unaccessible")
-                })
-
-                x = document.querySelector(`.${subbedName.toLowerCase()}`)
-                x.classList.add("unaccessible_btn")
-                x.innerHTML = `${subbedName}<br/><h6>(Already Subscribed)</h6>`
-            }
-        }
     }
 
     async function loadCheckOut(priceId) {
