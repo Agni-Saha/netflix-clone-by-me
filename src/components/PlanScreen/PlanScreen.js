@@ -122,13 +122,18 @@ export default function PlanScreen() {
 
     function planFunc() {
         let i = 0
+        const planArr = ["mobile", "basic", "standard", "premium"]
         let val = []
         val[i++] = Object.entries(products)
             .map(([productId, productData]) => {
                 if (productData.name?.toLowerCase()
                     .includes(subsciption?.role?.toLowerCase())) {
-                    alreadySubbed = i + 1
                     subbedName = subsciption?.role
+                    planArr.forEach(plans => {
+                        if (plans === subsciption?.role?.toLowerCase())
+                            alreadySubbed = i
+                        i++
+                    })
                 }
                 return ({
                     price: productData.prices
@@ -138,17 +143,16 @@ export default function PlanScreen() {
     }
 
     function isAlreadySubbed() {
-        if (alreadySubbed >= 0 && alreadySubbed < 4) {
-            let rowClass = ".row".concat(alreadySubbed)
-
-            let x = document.querySelectorAll(rowClass)
-            x.forEach(y => {
-                y.classList.add("unaccessible")
-            })
-
-            if (subbedName === null)
+        if (alreadySubbed > 0 && alreadySubbed <= 4) {
+            if (subbedName === null || alreadySubbed === null)
                 return null
             else {
+                let rowClass = ".row".concat(alreadySubbed)
+                let x = document.querySelectorAll(rowClass)
+                x.forEach(y => {
+                    y.classList.add("unaccessible")
+                })
+
                 x = document.querySelector(`.${subbedName.toLowerCase()}`)
                 x.classList.add("unaccessible_btn")
                 x.innerHTML = `${subbedName}<br/><h6>(Already Subscribed)</h6>`
@@ -161,7 +165,7 @@ export default function PlanScreen() {
             priceId = productList[1]
         else if (priceId === "" && alreadySubbed === 2)
             priceId = ""
-        
+
         const docRef = await db.collection("customers")
             .doc(user.uid).collection("checkout_sessions")
             .add({
