@@ -1,0 +1,32 @@
+.profileScreen {
+    background-color: white;
+}
+
+.profileScreen_Nav {
+    width: 100%;
+    top: 0;
+    height: 90px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.profileScreen_Nav>img {
+    position: absolute;
+    top: 20px;
+    left: 45px;
+    width: 175px;
+    cursor: pointer;
+    object-fit: contain;
+}
+
+.profileScreen_Nav>h2 {
+    position: absolute;
+    top: 32px;
+    right: 55px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.profileScreen_Nav>h2:hover {
+    text-decoration: underline;
+}

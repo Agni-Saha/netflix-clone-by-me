@@ -1,0 +1,218 @@
+.profileScreen_container {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.profileScreen_body {
+    padding: 15px 45px 14px 25px;
+}
+
+.profileScreen_details>h1 {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.red_Check {
+    color: #e50914;
+    margin-right: 5px;
+}
+
+.red_Check_details {
+    font-size: 1.15rem;
+    font-weight: 400;
+}
+
+.plan_box {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 35px;
+}
+
+.plan_box_btn {
+    color: white;
+    background-color: #e25f65;
+    height: 140px;
+    width: 120px;
+    margin-left: 35px;
+    padding: 43px 0;
+    font-size: 1.15rem;
+    font-weight: 600;
+    text-align: center;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    border-top: 10px solid white;
+    border-bottom: 10px solid white;
+}
+
+.grid_container {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 0.35fr 0.35fr 0.35fr;
+    gap: 30px 0px;
+    grid-template-areas: ". mobile basic standard premium" "monthly monthly_mobile monthly_basic monthly_standard monthly_premium" "quality quality_mobile quality_basic quality_standard quality_premium" "resolution resolution_mobile resolution_basic resolution_standard resolution_premium" "devices devices_mobile devices_basic devices_standard devices_premium";
+}
+
+.plan_detail {
+    font-weight: 700;
+    color: rgb(116, 114, 114);
+    text-align: center;
+    margin-left: 37px;
+}
+
+.plan_detail>i {
+    font-size: 1.25rem;
+}
+
+.redfont {
+    color: #e50914;
+}
+
+.redbg {
+    color: white;
+    background-color: #e50914;
+}
+
+.unaccessible {
+    pointer-events: none;
+    color: black;
+}
+
+.unaccessible_btn {
+    background-color: #e25f65;
+    font-weight: 700;
+    padding: 28px 0;
+}
+
+.mobile {
+    grid-area: mobile;
+}
+
+.basic {
+    grid-area: basic;
+}
+
+.standard {
+    grid-area: standard;
+}
+
+.premium {
+    grid-area: premium;
+}
+
+.monthly {
+    grid-area: monthly;
+}
+
+.monthly_mobile {
+    grid-area: monthly_mobile;
+}
+
+.monthly_basic {
+    grid-area: monthly_basic;
+}
+
+.monthly_standard {
+    grid-area: monthly_standard;
+}
+
+.monthly_premium {
+    grid-area: monthly_premium;
+}
+
+.quality {
+    grid-area: quality;
+}
+
+.quality_mobile {
+    grid-area: quality_mobile;
+}
+
+.quality_basic {
+    grid-area: quality_basic;
+}
+
+.quality_standard {
+    grid-area: quality_standard;
+}
+
+.quality_premium {
+    grid-area: quality_premium;
+}
+
+.resolution {
+    grid-area: resolution;
+}
+
+.resolution_mobile {
+    grid-area: resolution_mobile;
+}
+
+.resolution_basic {
+    grid-area: resolution_basic;
+}
+
+.resolution_standard {
+    grid-area: resolution_standard;
+}
+
+.resolution_premium {
+    grid-area: resolution_premium;
+}
+
+.devices {
+    grid-area: devices;
+}
+
+.devices_mobile {
+    grid-area: devices_mobile;
+}
+
+.devices_basic {
+    grid-area: devices_basic;
+}
+
+.devices_standard {
+    grid-area: devices_standard;
+}
+
+.devices_premium {
+    grid-area: devices_premium;
+}
+
+.profileScreen_descriptions {
+    margin-top: 27px;
+    font-size: 0.80rem;
+    color: gray;
+    width: 85%;
+}
+
+.TermsAndCond {
+    color: rgb(8, 106, 145);
+    font-weight: 500;
+}
+
+.TermsAndCond:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.profileScreen_Subscription {
+    color: white;
+    background-color: #e50914;
+    border: none;
+    cursor: pointer;
+    padding: 15px 165px;
+    margin: 25px 20px 25px 30%;
+    font-size: 1.5rem;
+    font-weight: 500;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 1200px) {
+    .profileScreen_body {
+        width: 100%;
+    }
+}
