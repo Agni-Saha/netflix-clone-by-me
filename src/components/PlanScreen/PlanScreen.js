@@ -18,6 +18,15 @@ export default function PlanScreen() {
 
     planFunc()
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    function startFunc() {
+        removeClass(".row1", ".mobile")
+        removeClass(".row3", ".standard")
+        removeClass(".row4", ".premium")
+
+        addClass(".row2", ".basic")
+    }
+
     useEffect(() => {
         db.collection("customers")
             .doc(user.uid)
@@ -59,7 +68,7 @@ export default function PlanScreen() {
                 setProducts(temp)
                 setProductList(pricesArr)
             })
-    }, [])
+    }, [startFunc])
 
     useEffect(() => {
         if (alreadySubbed > 0 && alreadySubbed <= 4) {
@@ -77,7 +86,7 @@ export default function PlanScreen() {
                 x.innerHTML = `${subbedName}<br/><h6>(Already Subscribed)</h6>`
             }
         }
-    }, [alreadySubbed])
+    }, [alreadySubbed, subbedName])
 
     function planFunc() {
         let i = 0
@@ -117,13 +126,6 @@ export default function PlanScreen() {
         mobileBG.classList.add("redbg")
     }
 
-    function startFunc() {
-        removeClass(".row1", ".mobile")
-        removeClass(".row3", ".standard")
-        removeClass(".row4", ".premium")
-
-        addClass(".row2", ".basic")
-    }
     function mobilefunc() {
         removeClass(".row2", ".basic")
         removeClass(".row3", ".standard")
@@ -159,7 +161,7 @@ export default function PlanScreen() {
     }
 
     async function loadCheckOut(priceId) {
-        if (priceId === "" && alreadySubbed != 2)
+        if (priceId === "" && alreadySubbed !== 2)
             priceId = productList[1]
         else if (priceId === "" && alreadySubbed === 2)
             priceId = ""
